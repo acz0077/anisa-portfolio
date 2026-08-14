@@ -91,4 +91,4 @@ Create User + Account + Session
 /onboarding
 ```
 
-The next development stage is completing onboarding and activating the dedicated Google login flow.
+The registration flow is implemented. The `/login` interface intentionally remains disabled until the next development stage, where the prepared `google-login` provider will be connected to the login button and protected dashboard flow.
