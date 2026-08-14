@@ -63,6 +63,8 @@ export default async function OnboardingPage({ searchParams }: OnboardingPagePro
         </aside>
 
         <form className={styles.formCard} action={completeOnboarding}>
+          <input type="hidden" name="mode" value={isEditing ? "edit" : "create"} />
+
           <div className={styles.formHeader}>
             <div>
               <p className={styles.stepLabel}>Personal information</p>
