@@ -62,7 +62,7 @@
     box-shadow 180ms ease;
 }
 
-.googleButton:hover {
+.googleButton:hover:not(:disabled) {
   transform: translateY(-2px);
   border-color: rgba(22, 24, 21, 0.32);
   box-shadow: 0 14px 34px rgba(22, 24, 21, 0.1);
@@ -71,6 +71,12 @@
 .googleButton:focus-visible {
   outline: 3px solid rgba(133, 189, 38, 0.35);
   outline-offset: 3px;
+}
+
+.googleButton:disabled {
+  cursor: not-allowed;
+  opacity: 0.58;
+  box-shadow: none;
 }
 
 .googleMark {
