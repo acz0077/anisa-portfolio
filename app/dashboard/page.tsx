@@ -34,7 +34,7 @@ export default async function DashboardPage() {
 
         <nav className={styles.nav} aria-label="Dashboard navigation">
           <a className={styles.active} href="/dashboard">Overview</a>
-          <span>Profile</span>
+          <a href="/onboarding?edit=1">Profile</a>
           <span>Projects</span>
           <span>Skills</span>
           <span>Education</span>
@@ -115,7 +115,7 @@ export default async function DashboardPage() {
               <p>Current profile</p>
               <h2>Personal information</h2>
             </div>
-            <a href="/onboarding">Edit profile →</a>
+            <a href="/onboarding?edit=1">Edit profile →</a>
           </div>
 
           <div className={styles.infoGrid}>
