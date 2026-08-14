@@ -5,7 +5,7 @@ import { completeOnboarding } from "@/actions/onboarding";
 import styles from "./onboarding.module.css";
 
 type OnboardingPageProps = {
-  searchParams: Promise<{ error?: string }>;
+  searchParams: Promise<{ error?: string; edit?: string }>;
 };
 
 export default async function OnboardingPage({ searchParams }: OnboardingPageProps) {
@@ -24,11 +24,12 @@ export default async function OnboardingPage({ searchParams }: OnboardingPagePro
     redirect("/register?error=account-not-found");
   }
 
-  if (user.registrationCompleted && user.profile) {
+  const { error, edit } = await searchParams;
+  const isEditing = edit === "1" && Boolean(user.profile);
+
+  if (user.registrationCompleted && user.profile && !isEditing) {
     redirect("/dashboard");
   }
-
-  const { error } = await searchParams;
 
   return (
     <main className={styles.page}>
@@ -38,11 +39,11 @@ export default async function OnboardingPage({ searchParams }: OnboardingPagePro
 
       <section className={styles.shell}>
         <aside className={styles.intro}>
-          <p className="eyebrow">Step 2 of 2</p>
-          <h1>Complete your profile.</h1>
+          <p className="eyebrow">{isEditing ? "Profile settings" : "Step 2 of 2"}</p>
+          <h1>{isEditing ? "Edit your profile." : "Complete your profile."}</h1>
           <p>
-            Data ini akan menjadi identitas utama yang tampil di dashboard dan nantinya
-            dapat digunakan untuk mengisi konten portofolio secara dinamis.
+            Data ini menjadi identitas utama di dashboard dan nantinya digunakan untuk
+            mengisi konten portofolio secara dinamis.
           </p>
 
           <div className={styles.accountCard}>
@@ -65,7 +66,7 @@ export default async function OnboardingPage({ searchParams }: OnboardingPagePro
           <div className={styles.formHeader}>
             <div>
               <p className={styles.stepLabel}>Personal information</p>
-              <h2>Tell people about you.</h2>
+              <h2>{isEditing ? "Update your information." : "Tell people about you."}</h2>
             </div>
             <span className={styles.badge}>Google connected ✓</span>
           </div>
@@ -182,8 +183,8 @@ export default async function OnboardingPage({ searchParams }: OnboardingPagePro
           </div>
 
           <div className={styles.actions}>
-            <p>* Wajib diisi sebelum masuk dashboard.</p>
-            <button type="submit">Save & continue →</button>
+            <p>{isEditing ? "Perubahan akan langsung tersimpan ke profil." : "* Wajib diisi sebelum masuk dashboard."}</p>
+            <button type="submit">{isEditing ? "Save changes →" : "Save & continue →"}</button>
           </div>
         </form>
       </section>
