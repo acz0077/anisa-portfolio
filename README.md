@@ -8,9 +8,15 @@ Personal portfolio for **Anisa Chuzaimatuz Zahro** built with Next.js, TypeScrip
 - Google OAuth registration
 - verified Google email check
 - duplicate-registration protection
-- PostgreSQL user/session persistence through Prisma
-- post-registration onboarding entry page
-- separate Google provider path prepared for login flow
+- PostgreSQL user/account/session persistence through Prisma
+- protected onboarding flow after registration
+- dedicated `Profile` model linked 1:1 with `User`
+- onboarding form for full name, age, university, headline, bio, location, GitHub, LinkedIn, and Instagram
+- `registrationCompleted` state updated only when profile persistence succeeds
+- protected dashboard overview
+- editable profile flow from dashboard
+- logout action from the dashboard
+- separate Google provider path prepared for the login stage
 
 ## Local setup
 
@@ -41,10 +47,10 @@ Personal portfolio for **Anisa Chuzaimatuz Zahro** built with Next.js, TypeScrip
    npm run db:generate
    ```
 
-5. Create the database tables:
+5. Create/update the database tables:
 
    ```bash
-   npx prisma migrate dev --name init-auth
+   npm run db:migrate -- --name add-profile-onboarding
    ```
 
 6. Start the application:
@@ -71,7 +77,7 @@ https://your-domain.com/api/auth/callback/google-login
 
 Never commit Google client secrets, `AUTH_SECRET`, or `DATABASE_URL` to GitHub.
 
-## Registration flow
+## Registration and onboarding flow
 
 ```text
 /register
@@ -89,6 +95,19 @@ Already registered?
 Create User + Account + Session
         ↓
 /onboarding
+        ↓
+Complete personal profile
+        ↓
+Profile saved + registrationCompleted = true
+        ↓
+/dashboard
 ```
 
-The registration flow is implemented. The `/login` interface intentionally remains disabled until the next development stage, where the prepared `google-login` provider will be connected to the login button and protected dashboard flow.
+## Protected routes
+
+- `/onboarding` requires a valid authenticated session.
+- completed users visiting `/onboarding` are redirected to `/dashboard` unless they explicitly open `/onboarding?edit=1` from the profile editor.
+- `/dashboard` requires an authenticated user with a completed profile.
+- incomplete users opening `/dashboard` are redirected back to `/onboarding`.
+
+The Google login interface intentionally remains disabled until the dedicated login stage is connected to the prepared `google-login` provider.
