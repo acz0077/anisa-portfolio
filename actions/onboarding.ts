@@ -16,12 +16,17 @@ export async function completeOnboarding(formData: FormData) {
     redirect("/register");
   }
 
+  const isEditing = formData.get("mode") === "edit";
+  const invalidRedirect = isEditing
+    ? "/onboarding?edit=1&error=invalid-profile"
+    : "/onboarding?error=invalid-profile";
+
   const fullName = String(formData.get("fullName") ?? "").trim();
   const age = Number(formData.get("age"));
   const university = String(formData.get("university") ?? "").trim();
 
   if (!fullName || !university || !Number.isInteger(age) || age < 15 || age > 100) {
-    redirect("/onboarding?error=invalid-profile");
+    redirect(invalidRedirect);
   }
 
   const user = await prisma.user.findUnique({
