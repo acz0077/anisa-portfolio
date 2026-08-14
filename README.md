@@ -35,13 +35,19 @@ Personal portfolio for **Anisa Chuzaimatuz Zahro** built with Next.js, TypeScrip
    npx auth secret
    ```
 
-4. Create the database tables:
+4. Generate Prisma Client:
+
+   ```bash
+   npm run db:generate
+   ```
+
+5. Create the database tables:
 
    ```bash
    npx prisma migrate dev --name init-auth
    ```
 
-5. Start the application:
+6. Start the application:
 
    ```bash
    npm run dev
