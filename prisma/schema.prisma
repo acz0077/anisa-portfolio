@@ -56,8 +56,29 @@ model User {
 
   accounts Account[]
   sessions Session[]
+  profile  Profile?
 
   @@map("users")
+}
+
+model Profile {
+  id         String   @id @default(cuid())
+  userId     String   @unique @map("user_id")
+  fullName   String   @map("full_name")
+  age        Int
+  university String
+  headline   String?
+  bio        String?  @db.Text
+  location   String?
+  github     String?
+  linkedin   String?
+  instagram  String?
+  createdAt  DateTime @default(now()) @map("created_at")
+  updatedAt  DateTime @updatedAt @map("updated_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("profiles")
 }
 
 model VerificationToken {
