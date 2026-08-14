@@ -1,10 +1,12 @@
+import styles from "../auth.module.css";
+
 export default function RegisterPage() {
   return (
-    <main className="auth-page">
-      <a className="brand auth-brand" href="/">
+    <main className={styles.page}>
+      <a className={`brand ${styles.brand}`} href="/">
         AZ<span>.</span>
       </a>
-      <section className="auth-card">
+      <section className={styles.card}>
         <p className="eyebrow">First-time setup</p>
         <h1>Create portfolio access.</h1>
         <p>
@@ -12,11 +14,11 @@ export default function RegisterPage() {
           Setelah registrasi berhasil, pemilik portofolio akan diarahkan untuk
           melengkapi profil sebelum masuk ke dashboard.
         </p>
-        <button className="google-button" type="button" disabled>
-          <span className="google-mark">G</span>
+        <button className={styles.googleButton} type="button" disabled>
+          <span className={styles.googleMark}>G</span>
           Register with Google
         </button>
-        <a className="auth-back" href="/login">
+        <a className={styles.back} href="/login">
           Already registered? Login →
         </a>
       </section>
