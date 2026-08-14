@@ -10,15 +10,15 @@ export default function LoginPage() {
         <p className="eyebrow">Portfolio owner access</p>
         <h1>Welcome back, Anisa.</h1>
         <p>
-          Login dengan akun Google akan diaktifkan pada tahap autentikasi berikutnya.
-          Halaman ini sudah disiapkan agar navigasi landing page tidak terputus.
+          Registrasi Google sudah aktif. Login Google akan diaktifkan pada tahap
+          berikutnya dan hanya menerima akun yang sudah pernah terdaftar.
         </p>
         <button className={styles.googleButton} type="button" disabled>
           <span className={styles.googleMark}>G</span>
           Continue with Google
         </button>
-        <a className={styles.back} href="/">
-          ← Back to portfolio
+        <a className={styles.back} href="/register">
+          New account? Register first →
         </a>
       </section>
     </main>
