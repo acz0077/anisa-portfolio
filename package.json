@@ -1,0 +1,36 @@
+{
+  "name": "anisa-portfolio",
+  "version": "0.3.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "prisma generate && next build",
+    "start": "next start",
+    "typecheck": "tsc --noEmit",
+    "db:generate": "prisma generate",
+    "db:migrate": "prisma migrate dev"
+  },
+  "dependencies": {
+    "@auth/prisma-adapter": "latest",
+    "@prisma/adapter-pg": "latest",
+    "@prisma/client": "latest",
+    "dotenv": "latest",
+    "next": "latest",
+    "next-auth": "beta",
+    "pg": "latest",
+    "react": "latest",
+    "react-dom": "latest"
+  },
+  "devDependencies": {
+    "@types/node": "latest",
+    "@types/pg": "latest",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "prisma": "latest",
+    "tsx": "latest",
+    "typescript": "latest"
+  },
+  "engines": {
+    "node": ">=20.9.0"
+  }
+}

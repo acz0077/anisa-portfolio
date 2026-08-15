@@ -1,0 +1,398 @@
+.page {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  background: #f3f1ea;
+}
+
+.sidebar {
+  min-height: 100vh;
+  padding: 34px 28px;
+  position: sticky;
+  top: 0;
+  align-self: start;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid var(--line);
+  background: #171a17;
+  color: white;
+}
+
+.brand {
+  color: white;
+}
+
+.nav {
+  margin-top: 76px;
+  display: grid;
+  gap: 8px;
+}
+
+.nav a,
+.nav span {
+  padding: 13px 14px;
+  border-radius: 12px;
+  color: rgba(255, 255, 255, 0.48);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.nav .active {
+  background: rgba(183, 243, 74, 0.12);
+  color: var(--accent);
+}
+
+.nav span {
+  cursor: default;
+}
+
+.logout {
+  width: 100%;
+  margin-top: auto;
+  padding: 13px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 12px;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.72);
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-align: left;
+  cursor: pointer;
+}
+
+.content {
+  min-width: 0;
+  padding: 38px clamp(28px, 5vw, 72px) 72px;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  gap: 32px;
+  align-items: center;
+}
+
+.eyebrow,
+.sectionTitle p {
+  margin: 0 0 8px;
+  color: var(--muted);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.topbar h1 {
+  margin: 0;
+  font-family: "Manrope", sans-serif;
+  font-size: clamp(2.6rem, 5vw, 4.6rem);
+  line-height: 0.96;
+  letter-spacing: -0.065em;
+}
+
+.userChip {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 250px;
+  padding: 10px 14px 10px 10px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.userChip strong,
+.userChip span {
+  display: block;
+}
+
+.userChip strong {
+  font-size: 0.78rem;
+}
+
+.userChip span {
+  max-width: 180px;
+  margin-top: 2px;
+  overflow: hidden;
+  color: var(--muted);
+  font-size: 0.68rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border-radius: 50%;
+  background: var(--accent);
+  font-weight: 800;
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.welcomeCard {
+  min-height: 330px;
+  margin-top: 54px;
+  padding: clamp(30px, 5vw, 58px);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 36px;
+  align-items: end;
+  overflow: hidden;
+  border-radius: 34px;
+  background: #171a17;
+  color: white;
+  position: relative;
+}
+
+.welcomeCard::before {
+  content: "";
+  position: absolute;
+  width: 360px;
+  height: 360px;
+  right: -110px;
+  top: -150px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.status {
+  display: inline-flex;
+  padding: 8px 11px;
+  border-radius: 999px;
+  background: rgba(183, 243, 74, 0.14);
+  color: var(--accent);
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.welcomeCard h2 {
+  max-width: 650px;
+  margin: 24px 0 18px;
+  font-family: "Manrope", sans-serif;
+  font-size: clamp(2.4rem, 4vw, 4.2rem);
+  line-height: 0.98;
+  letter-spacing: -0.055em;
+}
+
+.welcomeCard p {
+  max-width: 680px;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.52);
+  line-height: 1.75;
+}
+
+.bigMark {
+  width: 130px;
+  height: 130px;
+  position: relative;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  border-radius: 30px;
+  background: var(--accent);
+  color: #171a17;
+  font-family: "Manrope", sans-serif;
+  font-size: 2.5rem;
+  font-weight: 800;
+  letter-spacing: -0.08em;
+  transform: rotate(5deg);
+}
+
+.statsGrid {
+  margin-top: 24px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.statsGrid article {
+  min-height: 150px;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.45);
+}
+
+.statsGrid span {
+  color: var(--muted);
+  font-size: 0.7rem;
+}
+
+.statsGrid p {
+  margin: auto 0 4px;
+  color: var(--muted);
+  font-size: 0.74rem;
+}
+
+.statsGrid strong {
+  font-family: "Manrope", sans-serif;
+  font-size: 1.05rem;
+}
+
+.profileSection {
+  margin-top: 56px;
+  padding-top: 38px;
+  border-top: 1px solid var(--line);
+}
+
+.sectionTitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 24px;
+}
+
+.sectionTitle h2 {
+  margin: 0;
+  font-family: "Manrope", sans-serif;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  letter-spacing: -0.05em;
+}
+
+.sectionTitle a {
+  font-size: 0.8rem;
+  font-weight: 800;
+}
+
+.infoGrid {
+  margin-top: 28px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+
+.infoGrid > div {
+  min-height: 118px;
+  padding: 22px;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.26);
+}
+
+.infoGrid span {
+  display: block;
+  margin-bottom: 18px;
+  color: var(--muted);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.infoGrid strong {
+  font-size: 0.92rem;
+}
+
+.infoGrid p {
+  margin: 0;
+  color: #4f524c;
+  line-height: 1.7;
+}
+
+.wideInfo {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 980px) {
+  .page {
+    grid-template-columns: 86px 1fr;
+  }
+
+  .sidebar {
+    padding: 28px 16px;
+    align-items: center;
+  }
+
+  .nav a,
+  .nav span {
+    width: 48px;
+    overflow: hidden;
+    white-space: nowrap;
+    color: transparent;
+  }
+
+  .nav .active {
+    color: transparent;
+  }
+
+  .logout {
+    width: 48px;
+    overflow: hidden;
+    color: transparent;
+  }
+
+  .userChip {
+    display: none;
+  }
+
+  .statsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 680px) {
+  .page {
+    display: block;
+  }
+
+  .sidebar {
+    min-height: auto;
+    position: static;
+    flex-direction: row;
+    justify-content: space-between;
+    border-right: 0;
+  }
+
+  .nav {
+    display: none;
+  }
+
+  .logout {
+    margin-top: 0;
+    width: auto;
+    color: rgba(255, 255, 255, 0.72);
+  }
+
+  .content {
+    padding: 30px 16px 56px;
+  }
+
+  .welcomeCard {
+    grid-template-columns: 1fr;
+    margin-top: 36px;
+  }
+
+  .bigMark {
+    width: 90px;
+    height: 90px;
+    font-size: 1.8rem;
+  }
+
+  .statsGrid,
+  .infoGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .wideInfo {
+    grid-column: auto;
+  }
+
+  .sectionTitle {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
