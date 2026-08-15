@@ -35,7 +35,9 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       const email = googleProfile.email?.toLowerCase();
 
       if (!email || !googleProfile.email_verified) {
-        return "/register?error=unverified-email";
+        return account.provider === "google-login"
+          ? "/login?error=unverified-email"
+          : "/register?error=unverified-email";
       }
 
       const existingUser = await prisma.user.findUnique({
