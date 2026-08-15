@@ -6,8 +6,10 @@ Personal portfolio for **Anisa Chuzaimatuz Zahro** built with Next.js, TypeScrip
 
 - responsive portfolio landing page
 - Google OAuth registration
+- Google OAuth login for existing accounts
 - verified Google email check
 - duplicate-registration protection
+- login rejection for Google accounts that have not registered first
 - PostgreSQL user/account/session persistence through Prisma
 - protected onboarding flow after registration
 - dedicated `Profile` model linked 1:1 with `User`
@@ -16,7 +18,7 @@ Personal portfolio for **Anisa Chuzaimatuz Zahro** built with Next.js, TypeScrip
 - protected dashboard overview
 - editable profile flow from dashboard
 - logout action from the dashboard
-- separate Google provider path prepared for the login stage
+- automatic redirect for already-authenticated users
 
 ## Local setup
 
@@ -103,11 +105,33 @@ Profile saved + registrationCompleted = true
 /dashboard
 ```
 
+## Login flow
+
+```text
+/login
+   ↓
+Continue with Google
+   ↓
+Verified Google account?
+   ├─ no  → login rejected
+   └─ yes
+        ↓
+Account already registered?
+   ├─ no  → /register
+   └─ yes
+        ↓
+Create authenticated session
+        ↓
+/dashboard
+   ├─ profile incomplete → /onboarding
+   └─ profile complete   → dashboard overview
+```
+
+If an authenticated user opens `/login` again, the page automatically routes them to `/onboarding` or `/dashboard` based on their profile completion status.
+
 ## Protected routes
 
 - `/onboarding` requires a valid authenticated session.
 - completed users visiting `/onboarding` are redirected to `/dashboard` unless they explicitly open `/onboarding?edit=1` from the profile editor.
 - `/dashboard` requires an authenticated user with a completed profile.
 - incomplete users opening `/dashboard` are redirected back to `/onboarding`.
-
-The Google login interface intentionally remains disabled until the dedicated login stage is connected to the prepared `google-login` provider.
