@@ -91,15 +91,25 @@
   font-weight: 800;
 }
 
-.errorMessage {
+.errorMessage,
+.infoMessage {
   margin: -10px 0 24px;
   padding: 14px 16px;
-  border: 1px solid rgba(170, 47, 47, 0.2);
   border-radius: 16px;
-  background: rgba(170, 47, 47, 0.07);
-  color: #8f2d2d;
   font-size: 0.86rem;
   line-height: 1.55;
+}
+
+.errorMessage {
+  border: 1px solid rgba(170, 47, 47, 0.2);
+  background: rgba(170, 47, 47, 0.07);
+  color: #8f2d2d;
+}
+
+.infoMessage {
+  border: 1px solid rgba(133, 189, 38, 0.25);
+  background: rgba(183, 243, 74, 0.12);
+  color: #4f681c;
 }
 
 .securityNote {
